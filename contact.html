@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello World</title>
+  <title>Contact | Hello World</title>
   <style>
     :root {
       color-scheme: dark;
@@ -30,8 +30,8 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at 20% 20%, rgba(255, 107, 107, 0.35), transparent 28rem),
-        radial-gradient(circle at 80% 25%, rgba(81, 229, 180, 0.28), transparent 26rem),
+        radial-gradient(circle at 16% 24%, rgba(77, 171, 247, 0.32), transparent 27rem),
+        radial-gradient(circle at 82% 28%, rgba(255, 209, 102, 0.25), transparent 24rem),
         linear-gradient(135deg, #111827 0%, #182235 45%, #271a2f 100%);
     }
 
@@ -50,6 +50,28 @@
       translate: -50% 0;
     }
 
+    a,
+    button {
+      min-width: 9.5rem;
+      padding: 0.9rem 1.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 800;
+      text-align: center;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.08);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    a:hover,
+    button:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 255, 255, 0.52);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
     .nav a {
       min-width: auto;
       padding: 0.65rem 0.85rem;
@@ -65,29 +87,30 @@
 
     .stage {
       position: relative;
-      width: min(92vw, 820px);
+      width: min(92vw, 920px);
       padding: 6rem 2rem;
-      text-align: center;
     }
 
     .glow-ring {
       position: absolute;
       inset: 50%;
-      width: min(82vw, 520px);
+      width: min(82vw, 560px);
       aspect-ratio: 1;
       translate: -50% -50%;
-      border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: 50%;
-      background: conic-gradient(from 180deg, var(--coral), var(--gold), var(--mint), var(--blue), var(--coral));
-      filter: blur(28px);
-      opacity: 0.48;
+      background: conic-gradient(from 180deg, var(--blue), var(--mint), var(--gold), var(--coral), var(--blue));
+      filter: blur(30px);
+      opacity: 0.45;
       animation: drift 9s linear infinite;
     }
 
     .card {
       position: relative;
       z-index: 1;
-      padding: clamp(2rem, 7vw, 4.5rem);
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(1.5rem, 4vw, 3rem);
+      padding: clamp(2rem, 6vw, 4rem);
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--panel);
@@ -99,7 +122,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      margin: 0 0 1.2rem;
+      margin: 0 0 1rem;
       color: var(--muted);
       font-size: 0.78rem;
       font-weight: 700;
@@ -111,14 +134,14 @@
       width: 0.75rem;
       aspect-ratio: 1;
       border-radius: 50%;
-      background: var(--mint);
-      box-shadow: 0 0 20px var(--mint);
+      background: var(--blue);
+      box-shadow: 0 0 20px var(--blue);
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(3.4rem, 13vw, 8.5rem);
-      line-height: 0.92;
+      font-size: clamp(3.1rem, 9vw, 6.6rem);
+      line-height: 0.95;
       letter-spacing: 0;
     }
 
@@ -131,40 +154,51 @@
     }
 
     p {
-      max-width: 34rem;
-      margin: 1.5rem auto 0;
+      max-width: 30rem;
+      margin: 1.4rem 0 0;
       color: var(--muted);
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-size: clamp(1rem, 2.2vw, 1.12rem);
       line-height: 1.7;
     }
 
-    .button-row {
-      display: flex;
-      justify-content: center;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
+    form {
+      display: grid;
+      gap: 0.9rem;
     }
 
-    a {
-      min-width: 9.5rem;
-      padding: 0.9rem 1.2rem;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+    label {
+      display: grid;
+      gap: 0.4rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
       border-radius: 8px;
+      padding: 0.9rem 1rem;
       color: var(--ink);
-      font-weight: 800;
-      text-decoration: none;
+      font: inherit;
       background: rgba(255, 255, 255, 0.08);
-      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+      outline: none;
     }
 
-    a:hover {
-      transform: translateY(-3px);
-      border-color: rgba(255, 255, 255, 0.52);
-      background: rgba(255, 255, 255, 0.15);
+    textarea {
+      min-height: 9rem;
+      resize: vertical;
     }
 
-    a.primary {
+    input:focus,
+    textarea:focus {
+      border-color: var(--mint);
+      box-shadow: 0 0 0 3px rgba(81, 229, 180, 0.16);
+    }
+
+    button {
+      cursor: pointer;
       color: #08111f;
       background: var(--gold);
       border-color: transparent;
@@ -176,20 +210,22 @@
       }
     }
 
-    @media (max-width: 520px) {
-      body {
-        overflow: auto;
+    @media (max-width: 760px) {
+      .card {
+        grid-template-columns: 1fr;
       }
+    }
 
+    @media (max-width: 520px) {
       .stage {
-        padding: 2rem 1rem;
+        padding: 6rem 1rem 2rem;
       }
 
       .card {
         padding: 2.25rem 1.1rem;
       }
 
-      a {
+      button {
         width: 100%;
       }
     }
@@ -197,20 +233,33 @@
 </head>
 <body>
   <nav class="nav" aria-label="Main navigation">
-    <a href="index.html" aria-current="page">Home</a>
+    <a href="index.html">Home</a>
     <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="contact.html" aria-current="page">Contact</a>
   </nav>
-  <main class="stage" aria-label="Hello World welcome page">
+  <main class="stage" aria-label="Contact page">
     <div class="glow-ring" aria-hidden="true"></div>
     <section class="card">
-      <div class="eyebrow"><span class="spark"></span> First page online</div>
-      <h1>Hello <span>World</span></h1>
-      <p>A tiny HTML file dressed up with glass, glow, motion, and a little bit of confidence.</p>
-      <div class="button-row">
-        <a class="primary" href="about.html">About Us</a>
-        <a href="contact.html">Contact</a>
+      <div>
+        <div class="eyebrow"><span class="spark"></span> Contact</div>
+        <h1>Say <span>Hello</span></h1>
+        <p>Send a quick note from this stylish little contact page. The form is ready for a future backend when you want to make it live.</p>
       </div>
+      <form>
+        <label>
+          Your name
+          <input type="text" name="name" placeholder="Jane Doe">
+        </label>
+        <label>
+          Email address
+          <input type="email" name="email" placeholder="jane@example.com">
+        </label>
+        <label>
+          Message
+          <textarea name="message" placeholder="Write your message here"></textarea>
+        </label>
+        <button type="submit">Send Message</button>
+      </form>
     </section>
   </main>
 </body>

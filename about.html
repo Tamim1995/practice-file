@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello World</title>
+  <title>About | Hello World</title>
   <style>
     :root {
       color-scheme: dark;
@@ -30,8 +30,8 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at 20% 20%, rgba(255, 107, 107, 0.35), transparent 28rem),
-        radial-gradient(circle at 80% 25%, rgba(81, 229, 180, 0.28), transparent 26rem),
+        radial-gradient(circle at 18% 20%, rgba(81, 229, 180, 0.3), transparent 26rem),
+        radial-gradient(circle at 82% 32%, rgba(255, 107, 107, 0.3), transparent 25rem),
         linear-gradient(135deg, #111827 0%, #182235 45%, #271a2f 100%);
     }
 
@@ -50,6 +50,25 @@
       translate: -50% 0;
     }
 
+    a {
+      min-width: 9.5rem;
+      padding: 0.9rem 1.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      color: var(--ink);
+      font-weight: 800;
+      text-align: center;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.08);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    a:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 255, 255, 0.52);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
     .nav a {
       min-width: auto;
       padding: 0.65rem 0.85rem;
@@ -65,29 +84,27 @@
 
     .stage {
       position: relative;
-      width: min(92vw, 820px);
+      width: min(92vw, 920px);
       padding: 6rem 2rem;
-      text-align: center;
     }
 
     .glow-ring {
       position: absolute;
       inset: 50%;
-      width: min(82vw, 520px);
+      width: min(82vw, 560px);
       aspect-ratio: 1;
       translate: -50% -50%;
-      border: 1px solid rgba(255, 255, 255, 0.18);
       border-radius: 50%;
-      background: conic-gradient(from 180deg, var(--coral), var(--gold), var(--mint), var(--blue), var(--coral));
-      filter: blur(28px);
-      opacity: 0.48;
+      background: conic-gradient(from 180deg, var(--mint), var(--blue), var(--coral), var(--gold), var(--mint));
+      filter: blur(30px);
+      opacity: 0.45;
       animation: drift 9s linear infinite;
     }
 
     .card {
       position: relative;
       z-index: 1;
-      padding: clamp(2rem, 7vw, 4.5rem);
+      padding: clamp(2rem, 6vw, 4rem);
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--panel);
@@ -99,7 +116,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.6rem;
-      margin: 0 0 1.2rem;
+      margin: 0 0 1rem;
       color: var(--muted);
       font-size: 0.78rem;
       font-weight: 700;
@@ -111,14 +128,15 @@
       width: 0.75rem;
       aspect-ratio: 1;
       border-radius: 50%;
-      background: var(--mint);
-      box-shadow: 0 0 20px var(--mint);
+      background: var(--coral);
+      box-shadow: 0 0 20px var(--coral);
     }
 
     h1 {
+      max-width: 10ch;
       margin: 0;
-      font-size: clamp(3.4rem, 13vw, 8.5rem);
-      line-height: 0.92;
+      font-size: clamp(3.2rem, 10vw, 7.5rem);
+      line-height: 0.95;
       letter-spacing: 0;
     }
 
@@ -131,40 +149,48 @@
     }
 
     p {
-      max-width: 34rem;
-      margin: 1.5rem auto 0;
+      max-width: 42rem;
+      margin: 1.4rem 0 0;
       color: var(--muted);
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-size: clamp(1rem, 2.2vw, 1.18rem);
       line-height: 1.7;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .fact {
+      min-height: 8rem;
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .fact strong {
+      display: block;
+      margin-bottom: 0.45rem;
+      color: var(--ink);
+      font-size: 1.8rem;
+    }
+
+    .fact span {
+      color: var(--muted);
+      line-height: 1.5;
     }
 
     .button-row {
       display: flex;
-      justify-content: center;
       gap: 0.8rem;
       flex-wrap: wrap;
       margin-top: 2rem;
     }
 
-    a {
-      min-width: 9.5rem;
-      padding: 0.9rem 1.2rem;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 8px;
-      color: var(--ink);
-      font-weight: 800;
-      text-decoration: none;
-      background: rgba(255, 255, 255, 0.08);
-      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
-    }
-
-    a:hover {
-      transform: translateY(-3px);
-      border-color: rgba(255, 255, 255, 0.52);
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    a.primary {
+    .primary {
       color: #08111f;
       background: var(--gold);
       border-color: transparent;
@@ -176,20 +202,22 @@
       }
     }
 
-    @media (max-width: 520px) {
-      body {
-        overflow: auto;
+    @media (max-width: 700px) {
+      .facts {
+        grid-template-columns: 1fr;
       }
+    }
 
+    @media (max-width: 520px) {
       .stage {
-        padding: 2rem 1rem;
+        padding: 6rem 1rem 2rem;
       }
 
       .card {
         padding: 2.25rem 1.1rem;
       }
 
-      a {
+      .button-row a {
         width: 100%;
       }
     }
@@ -197,19 +225,24 @@
 </head>
 <body>
   <nav class="nav" aria-label="Main navigation">
-    <a href="index.html" aria-current="page">Home</a>
-    <a href="about.html">About</a>
+    <a href="index.html">Home</a>
+    <a href="about.html" aria-current="page">About</a>
     <a href="contact.html">Contact</a>
   </nav>
-  <main class="stage" aria-label="Hello World welcome page">
+  <main class="stage" aria-label="About page">
     <div class="glow-ring" aria-hidden="true"></div>
     <section class="card">
-      <div class="eyebrow"><span class="spark"></span> First page online</div>
-      <h1>Hello <span>World</span></h1>
-      <p>A tiny HTML file dressed up with glass, glow, motion, and a little bit of confidence.</p>
+      <div class="eyebrow"><span class="spark"></span> About this site</div>
+      <h1>Built to <span>shine</span></h1>
+      <p>This little site started as a Hello World page and grew into a polished mini experience. It keeps things simple, fast, and expressive with only HTML and CSS.</p>
+      <div class="facts">
+        <div class="fact"><strong>01</strong><span>Clean pages with matching navigation.</span></div>
+        <div class="fact"><strong>02</strong><span>Responsive styling for desktop and mobile.</span></div>
+        <div class="fact"><strong>03</strong><span>Fancy glow effects without extra libraries.</span></div>
+      </div>
       <div class="button-row">
-        <a class="primary" href="about.html">About Us</a>
-        <a href="contact.html">Contact</a>
+        <a class="primary" href="contact.html">Say Hello</a>
+        <a href="index.html">Back Home</a>
       </div>
     </section>
   </main>
